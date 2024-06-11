@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>식 기본 객체 (Expression Basic Objects)</h1>
+<ul>
+    <li>request = <span th:text="${#request}"></span></li>
+    <li>response = <span th:text="${#response}"></span></li>
+    <li>session = <span th:text="${#session}"></span></li>
+    <li>servletContext = <span th:text="${#servletContext}"></span></li>
+    <li>locale = <span th:text="${#locale}"></span></li>
+</ul>
+<h1>편의 객체</h1>
+<ul>
+    <li>Request Parameter = <span th:text="${param.paramData}"></span></li>
+    <li>session = <span th:text="${session.sessionData}"></span></li>
+    <li>spring bean = <span th:text="${@helloBean.hello('Spring!')}"></span></li>
+</ul>
+</body>
+</html>
+
+<!--
+  기본 객체들
+  타임리프는 기본 객체들을 제공한다.
+  - ${#request}
+  - ${#response}
+  - ${#session}
+  - ${#servletContext}
+  - ${#locale}
+  스프링 3.0부터는 제공되지 않는댄다. model에 해당 객체를 넣어서 사용하랜다.
+
+  #request는 HttpServletRequest 객체가 그대로 제공되기 때문에 데이터를 조회하려면 request.getParameter("data")처럼
+  불편하게 접근해야 한다.
+
+  이런 점을 해결하기 위해 편의 객체도 제공한다.
+  - HTTP 요청 파라미터 접근 : param
+    - 예) ${param.paramDate}
+  - HTTP 세션 접근 : session
+    - 예) ${session.sessionDate}
+  - 스프링 빈 접근 : @
+    - 예) ${@helloBean.hello('Spring!')}
+-->
