@@ -159,6 +159,12 @@ public class ValidationItemControllerV2 {
 
         // ValidationUtils.rejectIfEmptyOrWhitespace(bindingResult, "itemName", "required");
 
+        if (bindingResult.hasErrors()) {
+            log.info("errors = {}", bindingResult);
+            return "validation/v2/addForm";
+        }
+
+
         if (!StringUtils.hasText(item.getItemName())) {
             bindingResult.rejectValue("itemName", "required");
         }
@@ -175,12 +181,6 @@ public class ValidationItemControllerV2 {
             if (resultPrice < 10000) {
                 bindingResult.reject("totalPriceMin", new Object[]{10000, resultPrice}, "값은 10000원을 초과해야 합니다.");
             }
-        }
-
-        // 검증에 실패하면 다시 입력 폼으로 이동
-        if (bindingResult.hasErrors()) {
-            log.info("errors = {}", bindingResult);
-            return "validation/v2/addForm";
         }
 
         Item savedItem = itemRepository.save(item);
