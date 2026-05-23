@@ -1,3 +1,7 @@
 spring:
   application:
     name: exception
+  web:
+    error:
+      whitelabel:
+        enabled: false
