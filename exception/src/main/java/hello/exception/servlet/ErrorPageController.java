@@ -13,19 +13,6 @@ import static jakarta.servlet.RequestDispatcher.*;
 @Controller
 public class ErrorPageController {
 
-    //RequestDispatcher 상수로 정의되어 있음
-    public static final String ERROR_EXCEPTION =
-            "jakarta.servlet.error.exception";
-    public static final String ERROR_EXCEPTION_TYPE =
-            "jakarta.servlet.error.exception_type";
-    public static final String ERROR_MESSAGE = "jakarta.servlet.error.message";
-    public static final String ERROR_REQUEST_URI =
-            "jakarta.servlet.error.request_uri";
-    public static final String ERROR_SERVLET_NAME =
-            "jakarta.servlet.error.servlet_name";
-    public static final String ERROR_STATUS_CODE =
-            "jakarta.servlet.error.status_code";
-
     @RequestMapping("/error-page/404")
     public String errorPage404(HttpServletRequest request, HttpServletResponse response) {
         log.info("errorPage 404");
@@ -41,12 +28,12 @@ public class ErrorPageController {
     }
 
     private void printErrorInfo(HttpServletRequest request) {
-        log.info("ERROR_EXCEPTION : {}", request.getAttribute(RequestDispatcher.ERROR_EXCEPTION));
-        log.info("ERROR_EXCEPTION_TYPE : {}", request.getAttribute(RequestDispatcher.ERROR_EXCEPTION_TYPE));
-        log.info("ERROR_MESSAGE : {}", request.getAttribute(RequestDispatcher.ERROR_MESSAGE));
-        log.info("ERROR_REQUEST_URI : {}", request.getAttribute(RequestDispatcher.ERROR_REQUEST_URI));
-        log.info("ERROR_SERVLET_NAME : {}", request.getAttribute(RequestDispatcher.ERROR_SERVLET_NAME));
-        log.info("ERROR_STATUS_CODE : {}", request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE));
+        log.info("ERROR_EXCEPTION : {}", request.getAttribute(ERROR_EXCEPTION));
+        log.info("ERROR_EXCEPTION_TYPE : {}", request.getAttribute(ERROR_EXCEPTION_TYPE));
+        log.info("ERROR_MESSAGE : {}", request.getAttribute(ERROR_MESSAGE));
+        log.info("ERROR_REQUEST_URI : {}", request.getAttribute(ERROR_REQUEST_URI));
+        log.info("ERROR_SERVLET_NAME : {}", request.getAttribute(ERROR_SERVLET_NAME));
+        log.info("ERROR_STATUS_CODE : {}", request.getAttribute(ERROR_STATUS_CODE));
 
 
         log.info("dispatcher type = {}", request.getDispatcherType());
