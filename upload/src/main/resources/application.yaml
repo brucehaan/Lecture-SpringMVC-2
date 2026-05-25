@@ -6,4 +6,6 @@ logging:
     org:
       apache:
         coyote:
-          http11: debug
+          http11: # debug
+file:
+  dir: /Users/hanjeongsoo/coding/study/Lecture-SpringMVC-2/upload/file/
